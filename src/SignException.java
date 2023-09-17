@@ -1,4 +1,4 @@
-public class SignException extends Exception{
+class SignException extends Exception{
     public SignException() {
     }
 

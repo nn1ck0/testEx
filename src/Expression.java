@@ -1,4 +1,4 @@
-public class Expression {
+class Expression {
     private String exp;
     private String[] partOfExp;
 

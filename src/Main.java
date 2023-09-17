@@ -2,16 +2,15 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws RomanNumException, SignException {
-        Scanner in = new Scanner(System.in);
-
+    public static String calc(String input) throws RomanNumException, SignException {
+        
         Operation objNum1 = null;
         Operation objNum2 = null;
 
         int result;
         int flOfEx = 0;
 
-        Expression newExp = new Expression(in.nextLine());
+        Expression newExp = new Expression(input);
         newExp.partitionExpression();
 
         try {
@@ -88,6 +87,12 @@ public class Main {
             default:
                 throw new SignException("Ввели неверный знак!");
         }
+        return Integer.toString(result);
+    }
+
+    public static void main(String[] args) throws RomanNumException, SignException{
+        Scanner in = new Scanner(System.in);
+        calc(in.nextLine());
     }
 }
 

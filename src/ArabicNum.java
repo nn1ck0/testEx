@@ -1,4 +1,4 @@
-public class ArabicNum implements Operation{
+class ArabicNum implements Operation{
     private int operand;
 
 
