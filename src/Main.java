@@ -14,9 +14,9 @@ public class Main {
 
         try {
 
-            int i = Integer.parseInt(newExp.getFirsOpExp());
+            Integer.parseInt(newExp.getFirsOpExp());
             try {
-                int k = Integer.parseInt(newExp.getSecondOpExp());
+                Integer.parseInt(newExp.getSecondOpExp());
             } catch (NumberFormatException e) {
                 System.out.println("На вход принимаются только целые арабские или только римские цифры!");
                 System.exit(0);
@@ -24,7 +24,7 @@ public class Main {
 
         } catch (NumberFormatException e) {
             try {
-                int j = Integer.parseInt(newExp.getSecondOpExp());
+                Integer.parseInt(newExp.getSecondOpExp());
                 System.out.println("На вход принимаются только целые арабские или только римские цифры!");
                 System.exit(0);
             } catch (NumberFormatException i) {
