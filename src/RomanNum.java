@@ -20,7 +20,7 @@ enum RomanNum implements Operation{
     XCI(91),XCII(92),XCIII(93),XCIV(94),XCV(95),
     XCVI(96),XCVII(97),XCVIII(98),XCIX(99),C(100);
 
-    private int meaningInArab;
+    private final int meaningInArab;
 
 
     RomanNum(int meaningInArab) {
@@ -60,10 +60,9 @@ enum RomanNum implements Operation{
     }
 
     public static String resultInRoman(int result) {
-        String res;
         for (RomanNum num : RomanNum.values()) {
             if (num.meaningInArab == result) {
-                return res = num.name();
+                return num.name();
             }
         }
         return "-1";

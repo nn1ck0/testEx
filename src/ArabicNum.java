@@ -1,5 +1,5 @@
 class ArabicNum implements Operation{
-    private int operand;
+    private final int operand;
 
 
 
@@ -12,9 +12,6 @@ class ArabicNum implements Operation{
 
     }
 
-    public void setOperand(int operand) {
-        this.operand = operand;
-    }
     @Override
     public int getOperand() {
         return operand;

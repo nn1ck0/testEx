@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static String calc(String input) throws RomanNumException, SignException, ResultException {
+    public static String calc(String input) throws SignException, ResultException {
         
         Operation objNum1 = null;
         Operation objNum2 = null;
@@ -58,22 +58,16 @@ public class Main {
             objNum2 = new ArabicNum(Integer.parseInt(newExp.getSecondOpExp()));
         }
 
-        switch (newExp.getSignExp()) {
-            case ("+"):
-                return objNum1.sum(objNum2.getOperand());
-            case ("-"):
-                return objNum1.subtr(objNum2.getOperand());
-            case ("*"):
-                return objNum1.multpl(objNum2.getOperand());
-            case ("/"):
-                return objNum1.div(objNum2.getOperand());
-            default:
-                throw new SignException("Ввели неверный знак!");
-
-        }
+        return switch (newExp.getSignExp()) {
+            case ("+") -> objNum1.sum(objNum2.getOperand());
+            case ("-") -> objNum1.subtr(objNum2.getOperand());
+            case ("*") -> objNum1.multpl(objNum2.getOperand());
+            case ("/") -> objNum1.div(objNum2.getOperand());
+            default -> throw new SignException("Ввели неверный знак!");
+        };
     }
 
-    public static void main(String[] args) throws RomanNumException, SignException, ResultException {
+    public static void main(String[] args) throws SignException, ResultException {
 
         Scanner in = new Scanner(System.in);
         System.out.println(calc(in.nextLine()));}
