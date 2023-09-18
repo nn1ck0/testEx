@@ -34,32 +34,38 @@ enum RomanNum implements Operation{
 
 
     @Override
-    public int sum(int secondOP) {
-        return this.meaningInArab + secondOP;
+    public String sum(int secondOP) {
+        return resultInRoman(this.meaningInArab + secondOP);
     }
 
     @Override
-    public int subtr(int secondOP) {
-        return this.meaningInArab - secondOP;
+    public String subtr(int secondOP) throws ResultException {
+        if (this.meaningInArab - secondOP > 0) {return resultInRoman(this.meaningInArab - secondOP);}
+        else {
+            throw new ResultException("Римские числа не могут быть меньше 1!");
+        }
     }
 
     @Override
-    public int multpl(int secondOP) {
-        return this.meaningInArab * secondOP;
+    public String multpl(int secondOP) throws ResultException {
+        if (this.meaningInArab * secondOP <= 100) {return resultInRoman(this.meaningInArab * secondOP);}
+        else {
+            throw new ResultException("Слишком большое число!");
+        }
     }
 
     @Override
-    public int div(int secondOP) {
-        return this.meaningInArab / secondOP;
+    public String div(int secondOP) {
+        return resultInRoman(this.meaningInArab / secondOP);
     }
 
-    @Override
-    public void printResult(int result) {
+    public static String resultInRoman(int result) {
+        String res;
         for (RomanNum num : RomanNum.values()) {
             if (num.meaningInArab == result) {
-                System.out.println(num.name());
-                return;
+                return res = num.name();
             }
         }
+        return "-1";
     }
 }

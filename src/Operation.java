@@ -1,8 +1,7 @@
 public interface Operation {
-    public int sum(int secondOp);
-    public int subtr(int secondOp);
-    public int multpl(int secondOp);
-    public int div(int secondOp);
-    public void printResult(int result);
+    public String sum(int secondOp);
+    public String subtr(int secondOp) throws ResultException;
+    public String multpl(int secondOp) throws ResultException;
+    public String div(int secondOp);
     public int getOperand();
 }

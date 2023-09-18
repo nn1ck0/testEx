@@ -22,28 +22,24 @@ class ArabicNum implements Operation{
 
 
     @Override
-    public int sum(int secondOp) {
-        return this.operand + secondOp;
+    public String sum(int secondOp) {
+        return Integer.toString(this.operand + secondOp);
     }
 
     @Override
-    public int subtr(int secondOp) {
-        return this.operand - secondOp;
+    public String subtr(int secondOp) {
+        return Integer.toString(this.operand - secondOp);
     }
 
     @Override
-    public int multpl(int secondOp) {
-        return this.operand * secondOp;
+    public String multpl(int secondOp) {
+        return Integer.toString(this.operand * secondOp);
     }
 
     @Override
-    public int div(int secondOp) {
-        return this.operand / secondOp;
-    }
-
-    @Override
-    public void printResult(int result){
-        System.out.println(result);
+    public String div(int secondOp) {
+        if (secondOp != 0) {return Integer.toString(this.operand / secondOp);}
+        else throw new ArithmeticException("Деление на 0 запрещено!");
     }
 
 

@@ -2,12 +2,11 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static String calc(String input) throws RomanNumException, SignException {
+    public static String calc(String input) throws RomanNumException, SignException, ResultException {
         
         Operation objNum1 = null;
         Operation objNum2 = null;
 
-        int result;
         int flOfEx = 0;
 
         Expression newExp = new Expression(input);
@@ -61,38 +60,23 @@ public class Main {
 
         switch (newExp.getSignExp()) {
             case ("+"):
-                result = objNum1.sum(objNum2.getOperand());
-                objNum1.printResult(result);
-                break;
+                return objNum1.sum(objNum2.getOperand());
             case ("-"):
-                result = objNum1.subtr(objNum2.getOperand());
-                if ((result < 1) & (flOfEx == 2)) {
-                    throw new RomanNumException("В римских цифрах не может быть отрицательных чисел или 0");
-                }
-                objNum1.printResult(result);
-                break;
+                return objNum1.subtr(objNum2.getOperand());
             case ("*"):
-                result = objNum1.multpl(objNum2.getOperand());
-                if ((result > 100) & (flOfEx == 2)) {
-                    throw new RomanNumException("Максимальная римская цифра в данном калькуляторе - C (100)!");
-                }
-                objNum1.printResult(result);
-                break;
+                return objNum1.multpl(objNum2.getOperand());
             case ("/"):
-                if (objNum2.getOperand() == 0) throw new SignException("Деление на 0 запрещено!");
-                else {
-                result = objNum1.div(objNum2.getOperand());
-                objNum1.printResult(result);
-                break;}
+                return objNum1.div(objNum2.getOperand());
             default:
                 throw new SignException("Ввели неверный знак!");
+
         }
-        return Integer.toString(result);
     }
 
-    public static void main(String[] args) throws RomanNumException, SignException{
+    public static void main(String[] args) throws RomanNumException, SignException, ResultException {
+
         Scanner in = new Scanner(System.in);
-        calc(in.nextLine());
-    }
+        System.out.println(calc(in.nextLine()));}
+
 }
 
